@@ -2,48 +2,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class RomanNumerals extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.numeralMap = {
-      '1': 'I',
-      '5': 'V',
-      '10': 'X',
-      '50': 'L',
-      '100': 'C',
-      '500': 'D',
-      '1000': 'M'
-    };
-
-  }
   render() {
     return (
       <p>{this.compute(this.props.input)}</p>
     )
   }
 
-  compute(input) {
-    debugger;
-    let res = '',
-      sliced = input;
+  compute = input => {
+    const numeralMap = {
+      '1': 'I',
+      '4': 'IV',
+      '5': 'V',
+      '9': 'IX',
+      '10': 'X',
+      '40': 'XL',
+      '50': 'L',
+      '90': 'XC',
+      '100': 'C',
+      '400': 'CD',
+      '500': 'D',
+      '900': 'CM',
+      '1000': 'M'
+    };
+    let parts = [],
+      sliced = parseInt(input);
 
-    const numeralKeys = Object.keys(this.numeralMap);
+    const numeralKeys = Object.keys(numeralMap).reverse();
 
-    for (let i = 0; i < numeralKeys.length; i++) {
-      if (sliced / numeralKeys[i] <= 1) {
-        res += this.numeralMap[numeralKeys[i]];
+    getParts();
+    function getParts () {
+      for (let i = 0; i < numeralKeys.length; i++) {
+        if (sliced / numeralKeys[i] >= 1) {
+          parts.push(numeralKeys[i]);
+          sliced = sliced - numeralKeys[i];
+          break;
+        }
+      }
+
+      if (sliced !== 0) {
+        getParts();
       }
     }
 
-    return res;
-
-
-
-
-
-
-
-  }
+    return parts.map(num => numeralMap[num]);
+  };
 }
 
 RomanNumerals.propTypes = {
