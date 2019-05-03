@@ -1,5 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For the purposes of this skills test, this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I suggest you run npm start and look at the app in development mode.  You could run npm build but that will take some extra setup.
 
+
+Make sure you have node.js installed.  
+
+run 
+##### npm install 
+to get all the dependencies
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,16 +21,15 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
+Launches the UNIT test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test-a`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Launches the AUTOMATION tests runner powered by Cypress.
+Once the test window is opened, click on the auto.js to execute the tests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Roman Numerals
 
+The guide I found how to best convert a number to a roman numeral is [rapid tables](https://www.rapidtables.com/convert/number/how-number-to-roman-numerals.html).  Rapid tables also has a calcualtor which I used for validation, [calculator](https://www.rapidtables.com/convert/number/roman-numerals-converter.html?x1=&x2=1240)

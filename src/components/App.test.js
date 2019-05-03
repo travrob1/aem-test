@@ -15,7 +15,7 @@ it('renders without crashing', () => {
 describe('<App />', () => {
   it('application-title should be set', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('.application-title').text()).toEqual('ULTIMATE ROMAN NUMBERAL CONVERTER')
+    expect(wrapper.find('.application-title').text()).toEqual('ULTIMATE ROMAN NUMERAL CONVERTER')
   });
 
   it('should render application title in italian', () => {
