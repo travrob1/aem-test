@@ -25,4 +25,9 @@ describe('<RomanNumerals />', () => {
     expect(wrapper.find('p').text()).toEqual('CCLV');
   });
 
+  it('Should return MMXVIII when 2018 is passed in', () => {
+    const wrapper = shallow(<RomanNumerals input="2018"/>);
+    expect(wrapper.find('p').text()).toEqual('MMXVIII');
+  });
+
 });
