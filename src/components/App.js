@@ -11,7 +11,7 @@ class App extends React.Component {
   state = {
     valid: false,
     value: '',
-    validityMessage: ''
+    errorMessage: locales.errorMessage
   };
 
   handleKey = e => {
@@ -19,21 +19,23 @@ class App extends React.Component {
     if (currentTarget.validity.valid === true ) {
       this.setState({valid: true, value: currentTarget.value});
     }  else {
-      this.setState({valid: false, validityMessage: currentTarget.title, value: currentTarget.value});
+      this.setState({valid: false, value: currentTarget.value});
     }
   };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <header className="app-header">
           <h2 className="application-title" aria-label="Application title">{locales.title}</h2>
+        </header>
+        <div className="app-body">
           <div className="field">
-            <input className="search" onKeyUp={this.handleKey} pattern="^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1[0-9][0-9][0-9]|2[0-9][0-9][0-9]|3[0-9][0-9][0-9])$" placeholder={locales.inputPlaceholder} title="Please enter a valid number between 1 and 3,999" type="text"/>
-            <span className={`validation-message ${this.state.valid === false && this.state.value.length > 0 ? '': ' is-invisible'}`}>{this.state.validityMessage}</span>
+            <input className="search" onKeyUp={this.handleKey} pattern="^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1[0-9][0-9][0-9]|2[0-9][0-9][0-9]|3[0-9][0-9][0-9])$" placeholder={locales.inputPlaceholder} type="text" />
+            <span className={`validation-message ${this.state.valid === false && this.state.value.length > 0 ? '': ' is-invisible'}`}>{this.state.errorMessage}</span>
           </div>
           {this.state.valid && this.state.value.length > 0 ? <RomanNumerals input={this.state.value}/> : ''}
-        </header>
+        </div>
         <div className="filler">
           <p aria-label="Intro to Roman Numerals">{locales.intro}</p>
         </div>
@@ -56,7 +58,7 @@ class App extends React.Component {
 
   changeLocale(e) {
     locales.setLanguage(e.currentTarget.value);
-    this.setState({});
+    this.setState({errorMessage: locales.errorMessage});
   }
 }
 
